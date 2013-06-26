@@ -5,6 +5,8 @@ djcelery.setup_loader()
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
+BROKER_URL = 'amqp://guest:guest@localhost:5672'
+
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
 )
@@ -126,6 +128,7 @@ INSTALLED_APPS = (
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
+    'south',
     'djcelery',
     'celerytest',
 )
@@ -157,4 +160,8 @@ LOGGING = {
             'propagate': True,
         },
     }
+}
+
+SOUTH_MIGRATION_MODULES = {
+    'djcelery': 'ignore',
 }
